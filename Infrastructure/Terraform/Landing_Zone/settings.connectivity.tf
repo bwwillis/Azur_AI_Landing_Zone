@@ -193,7 +193,7 @@ locals {
       custom_settings_by_resource_type = {
         azurerm_subnet = {
           connectivity = {
-            canadaeast = {             # replace eastus with the location you are using
+            usgovvirginia = {             # replace eastus or with usgovvirginia for the location you are using
               inboundsubnetdns = { # replace subnet_name with the name of the subnet you want to configure and repeat this block for each subnet you need to configure
 
                 delegation = [ # add multiple entries to this list if multiple delegations are needed

@@ -1,0 +1,53 @@
+name: Destroy Mission Enclave Managment plan [USE WITH CAUTION]
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  plan:    
+    runs-on: ubuntu-latest
+    name: Destroy terraform configuration plan for an Mission Enclave Management terraform configuration
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
+      VM_PASSWORD: ${{ secrets.VM_PASSWORD }}
+      ARM_ENVIRONMENT: ${{ secrets.ARM_ENVIRONMENT }}
+    steps:
+    # Login to Azure Gov using Azure Credentials
+      - name: Log in to Azure Gov using Azure Credentials
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          environment: 'AzureUSGovernment'
+          enable-AzPSSession: true
+    # Login to Azure via OIDC
+      #- name: Log in to Azure using OIDC
+      #  uses: azure/login@v1
+      #  with:
+      #    client-id: ${{ secrets.AZURE_AD_CLIENT_ID }}
+      #    tenant-id: ${{ secrets.AZURE_AD_TENANT_ID }}
+      #    subscription-id: ${{ secrets.ARM_SUBSCRIPTION_ID }}    
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: terraform destroy
+        uses: azurenoops/terraform-github-actions/terraform-destroy@v1.34.2
+        with:
+          path: infrastructure/terraform
+          variables: |
+            subscription_id_hub               = "${{ env.ARM_SUBSCRIPTION_ID }}"
+            vm_admin_password                 = "${{ env.VM_PASSWORD }}"            
+          var_file: |
+            infrastructure/terraform/tfvars/parameters.tfvars
+          backend_config: |
+            storage_account_name=${{ secrets.AZURE_TF_STATE_STORAGE_ACCOUNT_NAME }}
+            container_name=${{ secrets.AZURE_TF_STATE_STORAGE_CONTAINER_NAME }}            
+            resource_group_name=${{ secrets.AZURE_TF_STATE_RESOURCE_GROUP_NAME }}
+ 
