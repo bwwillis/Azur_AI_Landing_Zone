@@ -11,7 +11,6 @@ terraform {
     storage_account_name = "anoaterraform"
     container_name       = "tfstate"
     key                  = "anoa.ai.tfstate"
-    
     endpoint             = "https://anoaterraform.blob.core.usgovcloudapi.net/tfstate"
     tenant_id            = "325ad034-a9c4-4349-9b24-1ed7913ef24f"
     subscription_id      = "0f880e51-6682-428b-a00a-40ac2da5bc2d"
