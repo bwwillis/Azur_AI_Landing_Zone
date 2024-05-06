@@ -16,7 +16,7 @@ terraform {
 
 provider "azurerm" {
   features {}
-
+  skip_provider_registration = true
   subscription_id = var.connectivity_subscription
 }
 
@@ -68,8 +68,8 @@ resource "azurerm_monitor_diagnostic_setting" "main" {
   dynamic "log" {
     for_each = data.azurerm_monitor_diagnostic_categories.firewall.logs
     content {
-      category = log.value
-      enabled  = true
+      category = log.value.category
+      enabled  = truelog.value.enabled
 
     }
   }

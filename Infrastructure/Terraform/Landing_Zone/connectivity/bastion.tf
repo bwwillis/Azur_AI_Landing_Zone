@@ -22,7 +22,7 @@ resource "azurerm_bastion_host" "lz-bastion-host" {
     public_ip_address_id = azurerm_public_ip.lz-pip-bastion.id
   }
 
-  depends_on=["module.enterprise_scale"]
+  depends_on=[module.enterprise_scale]
 }
 
 
