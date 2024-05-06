@@ -5,7 +5,10 @@ variable "location" {
   default = "usgovvirginia"  # for US Gov Virginia
 }
 
-
+variable "environment" {
+  type    = string
+  default = "usgovernment"
+}
 
 variable "identity_subscription" {
   type = string

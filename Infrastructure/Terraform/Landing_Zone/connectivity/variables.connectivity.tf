@@ -11,6 +11,11 @@ variable "connectivity_subscription" {
 
 variable "location" {}
 
+variable "environment" {
+  type    = string
+  default = "usgovernment"
+}
+
 variable "scope_management_group" {
 
 }

@@ -17,7 +17,8 @@ provider "azurerm" {
   features {}
 
   subscription_id = var.management_subscription
-  skip_provider_registration = true
+  environment                = var.environment
+  skip_provider_registration = var.environment == "usgovernment" ? true : false
 }
 
 # Get the current client configuration from the AzureRM provider

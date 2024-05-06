@@ -16,6 +16,7 @@
           },
           "Deny-Resource-Locations": {
             "listOfAllowedLocations": [
+              "usgovvirginia",
               "eastus",
               "eastus2",
               "westus",
@@ -26,6 +27,7 @@
           },
           "Deny-RSG-Locations": {
             "listOfAllowedLocations": [
+              "usgovvirginia",
               "eastus",
               "eastus2",
               "westus",

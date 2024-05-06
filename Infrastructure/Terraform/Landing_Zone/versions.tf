@@ -11,10 +11,12 @@ terraform {
     storage_account_name = "anoaterraform"
     container_name       = "tfstate"
     key                  = "anoa.ai.tfstate"
+    access_key           = "UUoTaTKahZUKIaYX3e50dwErg00R+r7fjZfAoxo7+oS0bvRg/ocRfS2Xo2zseLGWQyAjdPVKoU2E+AStr8r02w==" # This is a sensitive value, so it should be stored in a Key Vault.
     endpoint             = "https://anoaterraform.blob.core.usgovcloudapi.net/tfstate"
     tenant_id            = "325ad034-a9c4-4349-9b24-1ed7913ef24f"
     subscription_id      = "0f880e51-6682-428b-a00a-40ac2da5bc2d"
     environment          = "usgovernment"
+
   }
 
   # If you are using Terraform Cloud, You can update these values in order to configure your remote state.

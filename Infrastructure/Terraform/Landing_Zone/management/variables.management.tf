@@ -19,4 +19,9 @@ variable "management_resources_tags" {
 
 variable "location" {}
 
+variable "environment" {
+  type    = string
+  default = "usgovernment"
+}
+
 variable "configure_management_resources"{}

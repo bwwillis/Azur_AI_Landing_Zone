@@ -1,7 +1,7 @@
 # Configure the connectivity resources settings.
 locals {
   location                  = var.location
-  environment               = "dev"
+  environment               = "usgovernment"
   connectivity_subscription = var.connectivity_subscription
 
   configure_connectivity_resources = {
@@ -12,7 +12,7 @@ locals {
           config = {
             address_space                = ["10.100.0.0/16", ]
             location                     = local.location
-            resource_group_name          = "es-connectivity-usgovva"  #  if Commercial "es-connectivity-eastus"
+            resource_group_name          = "es-connectivity-usgovvirginia"  #  if Commercial "es-connectivity-eastus"
             link_to_ddos_protection_plan = false
             dns_servers                  = []
             bgp_community                = ""

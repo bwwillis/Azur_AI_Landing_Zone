@@ -32,12 +32,17 @@ terraform {
     }
   }
 }
+variable "environment" {
+  type    = string
+  default = "usgovernment"
+}
 
 # Define the provider configuration
 
 provider "azurerm" {
+  environment                = var.environment
+  skip_provider_registration = var.environment == "usgovernment" ? true : false
   features {}
-  skip_provider_registration = true
 }
 
 data "azurerm_client_config" "core" {}

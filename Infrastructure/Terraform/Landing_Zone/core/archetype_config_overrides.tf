@@ -1,4 +1,5 @@
 locals {
+  environment = "usgovernment"
   archetype_config_overrides = {
     landing-zones = {
       enforcement_mode = {

@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "azurerm" {
-
+  environment = "usgovernment"
   features {}
 }
 
@@ -16,19 +16,24 @@ provider "azurerm" {
 provider "azurerm" {
  alias           = "connectivity"
   subscription_id = var.connectivity_subscription
+  environment                = var.environment
+  skip_provider_registration = var.environment == "usgovernment" ? true : false
   features {}
-  skip_provider_registration = true
 }
 
 provider "azurerm" {
   alias           = "management"
   subscription_id = var .management_subscription
+  environment                = var.environment
+  skip_provider_registration = var.environment == "usgovernment" ? true : false
   features {}
 } 
 
 provider "azurerm" {
   alias           = "identity"
   subscription_id = var.identity_subscription
+  environment                = var.environment
+  skip_provider_registration = var.environment == "usgovernment" ? true : false
   features {}
 } 
 
