@@ -17,6 +17,7 @@ provider "azurerm" {
  alias           = "connectivity"
   subscription_id = var.connectivity_subscription
   features {}
+  skip_provider_registration = true
 }
 
 provider "azurerm" {

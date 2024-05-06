@@ -17,6 +17,7 @@ provider "azurerm" {
   features {}
 
   subscription_id = var.management_subscription
+  skip_provider_registration = true
 }
 
 # Get the current client configuration from the AzureRM provider
