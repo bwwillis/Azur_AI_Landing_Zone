@@ -95,7 +95,7 @@ data "local_file" "workbook_content" {
  
 }
 
-resource "azurerm_application_insights_workbook" "firwall" {
+resource "azurerm_application_insights_workbook" "firewall" {
   name                = "85b3e8bb-fc93-40be-83f2-98f6bec18ba0"
   resource_group_name = values(values(module.enterprise_scale.azurerm_firewall)[0])[0].resource_group_name
   location            = var.location

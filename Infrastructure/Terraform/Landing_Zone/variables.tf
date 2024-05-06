@@ -1,7 +1,8 @@
 #Connectivity
 variable "location" {
   type    = string
-  default = "eastus"
+  #default = "eastus"  # for commercial Azure
+  default = "usgovvirginia"  # for US Gov Virginia
 }
 
 
